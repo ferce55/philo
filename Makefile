@@ -6,16 +6,16 @@
 #    By: rsarri-c <rsarri-c@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/16 13:23:02 by rsarri-c          #+#    #+#              #
-#    Updated: 2022/11/30 11:54:22 by rsarri-c         ###   ########.fr        #
+#    Updated: 2022/12/22 23:01:17 by rsarri-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	philo
-SRCS		=	./srcs/main.c ./srcs/init.c ./srcs/utils.c
+SRCS		=	./srcs/main.c ./srcs/init.c ./srcs/utils.c ./srcs/philo_utils.c ./srcs/philo.c
 
 CC			=	@gcc
--- CFLAGS		=	-Wall -Werror -Wextra
--- SANITIZE	=	-fsanitize=address
+CFLAGS		=	-Wall -Werror -Wextra
+SANITIZE	=	-fsanitize=thread
 RM			=	rm -rf
 
 OBJS		=	$(SRCS:.c=.o)

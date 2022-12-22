@@ -6,7 +6,7 @@
 /*   By: rsarri-c <rsarri-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 11:29:16 by rsarri-c          #+#    #+#             */
-/*   Updated: 2022/11/30 15:01:08 by rsarri-c         ###   ########.fr       */
+/*   Updated: 2022/12/20 15:41:27 by rsarri-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,30 @@ int	ft_is_digit(char c)
 	if (c >= '0' && c <= '9')
 		return (0);
 	return (1);
+}
+
+void	*ft_memset(void *b, int c, size_t len)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < len)
+	{
+		((unsigned char *)b)[i] = c;
+		i++;
+	}
+	return (b);
+}
+
+void	*ft_calloc(size_t count, size_t size)
+{
+	size_t	tsize;
+	void	*dst;
+
+	tsize = count * size;
+	dst = malloc(tsize);
+	if (!(dst))
+		return (0);
+	ft_memset(dst, 0, tsize);
+	return (dst);
 }
