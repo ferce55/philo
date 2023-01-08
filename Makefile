@@ -6,7 +6,7 @@
 #    By: rsarri-c <rsarri-c@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/16 13:23:02 by rsarri-c          #+#    #+#              #
-#    Updated: 2022/12/22 23:01:17 by rsarri-c         ###   ########.fr        #
+#    Updated: 2023/01/08 12:33:00 by rsarri-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ SRCS		=	./srcs/main.c ./srcs/init.c ./srcs/utils.c ./srcs/philo_utils.c ./srcs/p
 
 CC			=	@gcc
 CFLAGS		=	-Wall -Werror -Wextra
-SANITIZE	=	-fsanitize=thread
+-- SANITIZE	=	-fsanitize=thread
 RM			=	rm -rf
 
 OBJS		=	$(SRCS:.c=.o)

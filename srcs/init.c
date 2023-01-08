@@ -6,7 +6,7 @@
 /*   By: rsarri-c <rsarri-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 11:47:20 by rsarri-c          #+#    #+#             */
-/*   Updated: 2022/12/22 22:49:40 by rsarri-c         ###   ########.fr       */
+/*   Updated: 2023/01/08 12:06:22 by rsarri-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ int	ft_init(t_params *params, int argc, char **argv)
 	pthread_mutex_init(&params->m_eat, NULL);
 	pthread_mutex_init(&params->dead, NULL);
 	params->stop = 0;
+	params->eat = 0;
 	params->nphilo = ft_atoi(argv[1]);
 	params->t_todie = ft_atoi(argv[2]);
 	params->t_toeat = ft_atoi(argv[3]);

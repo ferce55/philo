@@ -6,7 +6,7 @@
 /*   By: rsarri-c <rsarri-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 10:43:00 by rsarri-c          #+#    #+#             */
-/*   Updated: 2022/12/22 22:25:31 by rsarri-c         ###   ########.fr       */
+/*   Updated: 2023/01/08 11:55:12 by rsarri-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_philo
 	struct s_params	*info;
 	pthread_mutex_t	*fork_r;
 	pthread_mutex_t	fork_l;
+	pthread_mutex_t	m_last_eat;
 }	t_philo;
 
 typedef struct s_params
@@ -56,7 +57,7 @@ void		*ft_calloc(size_t count, size_t size);
 long long	timestamp(void);
 void		*philo_life(void *philo_aux);
 void		ft_usleep(t_params *params, int ms);
-int			is_dead(t_philo *philo, int id);
+int			is_dead(t_params *params, int id);
 void		print(t_philo *philo, char *str);
 void		free_all(t_params *params);
 void		*check_death(t_params *params);

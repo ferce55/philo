@@ -6,7 +6,7 @@
 /*   By: rsarri-c <rsarri-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 16:33:44 by rsarri-c          #+#    #+#             */
-/*   Updated: 2022/12/22 23:08:43 by rsarri-c         ###   ########.fr       */
+/*   Updated: 2023/01/08 12:32:54 by rsarri-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	free_all(t_params *params)
 	i = 0;
 	while (i < params->nphilo)
 	{
+		pthread_detach(params->philo[i].thread);
 		pthread_mutex_destroy(&params->philo[i].fork_l);
 		pthread_mutex_destroy(params->philo[i].fork_r);
 		i++;
@@ -30,20 +31,20 @@ void	free_all(t_params *params)
 	pthread_mutex_destroy(&params->dead);
 }
 
-int	is_dead(t_philo *philo, int id)
+int	is_dead(t_params *params, int id)
 {
-	pthread_mutex_lock(&philo->info->dead);
-	pthread_mutex_lock(&philo->info->m_stop);
+	pthread_mutex_lock(&(params->dead));
+	pthread_mutex_lock(&(params->m_stop));
 	if (id)
-		philo->info->stop = 1;
-	if (philo->info->stop)
+		params->stop = 1;
+	if (params->stop)
 	{
-		pthread_mutex_unlock(&philo->info->m_stop);
-		pthread_mutex_unlock(&philo->info->dead);
+		pthread_mutex_unlock(&(params->m_stop));
+		pthread_mutex_unlock(&(params->dead));
 		return (1);
 	}
-	pthread_mutex_unlock(&philo->info->m_stop);
-	pthread_mutex_unlock(&philo->info->dead);
+	pthread_mutex_unlock(&(params->m_stop));
+	pthread_mutex_unlock(&(params->dead));
 	return (0);
 }
 
@@ -70,8 +71,8 @@ void	print(t_philo *philo, char *str)
 
 	pthread_mutex_lock(&(philo->info->print));
 	time = timestamp() - philo->info->t_start;
-	if (!philo->info->stop && time >= 0 \
-		&& time <= INT_MAX && !is_dead(philo, 0))
+	if (!is_dead(philo->info, 0) && time >= 0 \
+		&& time <= INT_MAX)
 		printf("%lld %d %s", timestamp() - philo->info->t_start, philo->id, \
 			str);
 	pthread_mutex_unlock(&(philo->info->print));
