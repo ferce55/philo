@@ -6,7 +6,7 @@
 /*   By: rsarri-c <rsarri-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 10:34:32 by rsarri-c          #+#    #+#             */
-/*   Updated: 2023/01/08 12:34:57 by rsarri-c         ###   ########.fr       */
+/*   Updated: 2023/01/08 21:23:43 by rsarri-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	main(int argc, char **argv)
 	t_params	params;
 	int			result;
 
-	//atexit(leaks);
 	if (argc != 5 && argc != 6)
 		return (printf("Error\n"));
 	result = ft_init(&params, argc, argv);
